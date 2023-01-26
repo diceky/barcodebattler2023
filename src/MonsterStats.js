@@ -17,9 +17,6 @@ export default class MonsterStats extends React.Component {
     };
   }
 
-  propTypes: {
-  }
-
   render() {
 
     const data = {

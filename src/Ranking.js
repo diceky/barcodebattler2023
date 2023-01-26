@@ -16,10 +16,7 @@ export default class Ranking extends React.Component {
       wins:[]
     };
   }
-
-  propTypes: {
-  }
-
+  
   render() {
 
     let wins = [];

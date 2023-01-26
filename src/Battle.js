@@ -95,9 +95,6 @@ export default class Battle extends React.Component {
     this.setPotion=this.setPotion.bind(this);
   }
 
-  propTypes: {
-  }
-
   setStatsToState(){
     this.setState({
       price:[this.props.stats1[0],this.props.stats2[0]],

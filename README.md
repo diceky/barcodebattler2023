@@ -1,4 +1,4 @@
-# Barcode Battler (2018 ver.)
+# Barcode Battler (2023 ver.)
 
 ![logo](https://www.daisukeyukita.com/image/work44.png)
 

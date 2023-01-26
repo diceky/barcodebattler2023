@@ -16,9 +16,6 @@ export default class Attack extends React.Component {
     this.setPotion=this.setPotion.bind(this);
   }
 
-  propTypes: {
-  }
-
   setHp(){
     //calculate enemy index
     let enemy=0;
