@@ -116,7 +116,7 @@ const modalText = {
               </Grid>
               <Grid item xs={4}>
                 <div id="scan-area">
-                  <Button variant='contained' color='primary' size='small' onClick={this._scan2} style={scanBtn} fullWidth={true}>{this.state.scanning2 ? 'Stop' : 'PLAYER2'}</Button>
+                  <Button variant='contained' color='secondary' size='small' onClick={this._scan2} style={scanBtn} fullWidth={true}>{this.state.scanning2 ? 'Stop' : 'PLAYER2'}</Button>
                 </div>
               </Grid>
               <Grid item xs={4}>

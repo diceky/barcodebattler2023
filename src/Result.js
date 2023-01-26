@@ -15,10 +15,6 @@ export default class Result extends React.Component {
     this.props.registerTotal(price, hits, janTotal, player, name, image,review);
   }
 
-  propTypes: {
-    result: React.PropTypes.object
-  }
-
   render() {
 
     const result = this.props.result;

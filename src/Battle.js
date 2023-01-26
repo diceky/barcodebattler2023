@@ -181,7 +181,7 @@ export default class Battle extends React.Component {
 
     return (
       <div>
-        <Button variant='contained' color='secondary' onClick={this.setStatsToState} style={scanBtn} fullWidth='true'>BATTLE</Button>
+        <Button variant='contained' color='error' onClick={this.setStatsToState} style={scanBtn} fullWidth='true'>BATTLE</Button>
         <Modal
           aria-labelledby="battle-modal-title"
           aria-describedby="battle-modal-description"
@@ -195,7 +195,7 @@ export default class Battle extends React.Component {
               {this.state.winner==null ? 'BATTLE' : 'WINNER'}
             </Typography>
             {this.state.winner==null ?
-            <Grid container spacing={24}>
+            <Grid container spacing={0}>
               <Grid item xs={6}>
                 <Card>
                   <CardContent>
