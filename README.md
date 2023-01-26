@@ -15,4 +15,3 @@ In the battle, users have a choice of either
 - YAHOO POTION (multiplies the attack value by how well the item is rated on Yahoo Shopping)
 
 Let's figure out what the strongest product in the market is.
-
