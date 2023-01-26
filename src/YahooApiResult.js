@@ -3,7 +3,6 @@ import MonsterStats from './MonsterStats';
 import Typography from '@mui/material/Typography';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
@@ -52,9 +51,8 @@ export default class YahooApiResult extends React.Component {
       .then(data => {
           var obj = JSON.parse(data.contents);
           if(obj.totalResultsAvailable > 0){ //yahoo API has a hit
-            console.log("code exists in Yahoo API!");
             var splitName = obj.hits[0].name.split(" ");//hankaku space
-            if(splitName.length==1) splitName = obj.hits[0].name.split("　");//zenkaku space
+            if(splitName.length===1) splitName = obj.hits[0].name.split("　");//zenkaku space
             if(splitName.length > 1){
               var filteredName = "";
               for(var k=0;k<splitName.length;k++){
@@ -111,7 +109,7 @@ export default class YahooApiResult extends React.Component {
       .get()
       .then(doc=>{
         if(doc.exists){
-          console.log(this.props.code+' already exists in firestore');
+          //console.log(this.props.code+' already exists in firestore');
         } else{
           firestore.collection("barcodes").doc(this.props.code).set({
             name: this.state.name,
@@ -126,22 +124,13 @@ export default class YahooApiResult extends React.Component {
 
       return (
         <div>
-          {/*
-          <ul className="results">
-            <li>{this.props.code}</li>
-            <li>{this.state.name}</li>
-            <li>{this.state.manufacturer}</li>
-            <li>{this.state.price}</li>
-            <li>{this.state.hits}</li>
-          </ul>
-          */}
           <Card style={cardStyle}>
             <CardContent>
               <Typography type='h5' color='inherit' style={{ fontSize: '18px', marginTop:'10px', marginBottom:'10px', fontWeight:'600', textAlign:'center'}}>
                 {this.state.name}
               </Typography>
               <div style={{textAlign:'center'}}>
-                <img src={this.state.image} style={imgStyle} className='scanImg'/>
+                <img src={this.state.image} style={imgStyle} className='scanImg' alt="product"/>
               </div>
               <MonsterStats name={this.state.name} price={this.state.price} janTotal={statsJanTotal}　hits={statsHits}/>
             </CardContent>

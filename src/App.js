@@ -8,25 +8,14 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/material/Menu';
-import Icon from '@mui/material/Icon';
 import Modal from '@mui/material/Modal';
 import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
-import { grey } from '@mui/material/colors';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import HelpIcon from '@mui/icons-material/Help';
 import CloseIcon from '@mui/icons-material/Close';
 
-const accent=grey[50];
-
 const scanBtn = {
-  top: '0px',
-  right: '0px',
-  bottom: '0px',
-  left: '0px',
-  margin: '30px auto',
+  margin: '40px auto',
   height:'50px',
   fontSize:'15px'
   };
@@ -38,7 +27,7 @@ const menuText = {
 
 const modalStyle = {
     position: 'absolute',
-    padding: '30px',
+    padding: '40px',
     transform: 'translate(0%, 0%)'
   };
 
@@ -47,6 +36,12 @@ const modalText = {
     marginTop:'20px',
     marginBottom:'20px'
   };
+
+const footerStyle = {
+  position:'fixed',
+  bottom:'0',
+  textAlign:'center',
+}
 
   export default class App extends React.Component {
     constructor(){
@@ -130,29 +125,40 @@ const modalText = {
               {this.state.scanned1&&this.state.scanned2 ? <Battle result1={this.state.results1} result2={this.state.results2} stats1={this.state.stats1} stats2={this.state.stats2} name1={this.state.name1} name2={this.state.name2} resetScan={this.resetScan}/> : null}
             </div>
 
+            <Grid container spacing={0} style={footerStyle}>
+              <Grid item xs={12}>
+                <Typography style={{fontSize:'14px'}}>
+                Made with ❤️ by <a href="https://daisukeyukita.com" style={{textDecoration:'none'}}>Dice Yukita</a>
+                </Typography>
+              </Grid>
+            </Grid>
+
             <Modal
               aria-labelledby="help-modal-title"
               aria-describedby="help-modal-description"
               open={this.state.help}
               onBackdropClick={this.closeModal}
               disableAutoFocus={true}
+              BackdropProps={{style: {backgroundColor: 'rgba(0, 0, 0, 0.9 )'}}}
             >
               <div style={modalStyle}>
-                <div style={{textAlign:'right'}}>
-                  <Button fontSize="large" onClick={this.closeModal} style={{color:'white'}}>
-                    <CloseIcon />
-                  </Button>
-                </div>
                 <Typography variant="h5" id="help-modal-title" style={modalText}>
                   What is Barcode Battler?
                 </Typography>
                 <Typography variant="subtitle1" id="help-modal-description" style={modalText} component="p">
                   Barcode Battler is a battle game where players fight with existing products. Be it chewing gums, bicycles or vacuum machines, scan in any product via the camera using the barcodes.
-                   (NOTE: items which are not listed in Yahoo Shopping will not be eligible for the battle).
                 </Typography>
                 <Typography variant="subtitle1" id="help-modal-description" style={modalText} component="p">
                   Join the adventure to find the strongest product in the market!
                 </Typography>
+                <Typography variant="subtitle1" id="help-modal-description" style={modalText} component="p">
+                   (NOTE: items which are not listed in Yahoo Shopping will not be eligible for the battle)
+                </Typography>
+                <div style={{textAlign:'center', marginTop:'40px'}}>
+                  <Button fontSize="large" onClick={this.closeModal} style={{color:'black', border:'1px solid white', borderRadius:'50px', backgroundColor:'white'}}>
+                    <CloseIcon />
+                  </Button>
+                </div>
               </div>
             </Modal>
           </div>
@@ -190,9 +196,9 @@ const modalText = {
 
     registerTotal(price, hits, janTotal, player, name, image,review) {
         //check if review is null
-        if(review==null) review=0;
+        if(review===null) review=0;
 
-        if(player==1&&this.state.scanning1!=false){
+        if(player===1&&this.state.scanning1!==false){
           this.setState({
             scanning1: false,
             stats1:[price,hits,janTotal,image,review],
@@ -200,7 +206,7 @@ const modalText = {
             scanned1:true
           });
         }
-        else if(player==2&&this.state.scanning2!=false){
+        else if(player===2&&this.state.scanning2!==false){
           this.setState({
             scanning2: false,
             stats2:[price,hits,janTotal,image,review],
